@@ -89,7 +89,7 @@ def gen_sbatch(exp, results_dir):
         f"\n\n"
         f"repartition --max-mem {memory_bytes} --create  \"{exp['a']}\" \"{exp['i']}\" \"{exp['o']}\" {exp['alg']}\n"
         f"\n"
-        f"repartition --max-mem {memory_bytes} --repartition \"{exp['a']}\" \"{exp['i']}\" \"{exp['o']}\" {exp['alg']} > {op.join(results_dir, 'runtime.txt')}\n"
+        f"/usr/bin/time -o {op.join(results_dir, 'runtime.txt')} -v repartition --max-mem {memory_bytes} --repartition \"{exp['a']}\" \"{exp['i']}\" \"{exp['o']}\" {exp['alg']}"
         f"\n"
         f"repartition --max-mem {memory_bytes} --delete \"{exp['a']}\" \"{exp['i']}\" \"{exp['o']}\" {exp['alg']}\n"
         f"\n\n"
@@ -132,7 +132,14 @@ def main(conditions, repetitions, results_dir, nodelist):
             job_id = launch(sb_file, nodelist)
 
             # wait for experiment to complete
-            wait(job_id)
+            if job_id is not None:
+                wait(job_id)
+
+            # sleep to prevent sbatch failures
+            sleep(60)
+
+        # randomize for next repetition
+        shuffle(rand_exp)
 
 
 if __name__ == "__main__":
