@@ -1,0 +1,10 @@
+Clearing cache
+3
+[ 22:31:40.926408 ] Creating input blocks
+[ 22:35:52.428843 ] Using existing input blocks
+[ 22:35:52.432879 ] Repartitioning input blocks into output blocks
+[ 22:42:30.887905 ] Seeks, peak memory (B), read time (s), write time (s), elapsed time (s):
+49112832.0,669921875,27.25,125.81,398.45
+[ 22:42:30.952857 ] Using existing input blocks
+[ 22:42:30.959444 ] Deleting output blocks
+Removing directories

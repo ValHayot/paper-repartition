@@ -1,0 +1,22 @@
+Clearing cache
+3
+[ 20:30:40.204362 ] Creating input blocks
+[ 20:34:52.100689 ] Using existing input blocks
+[ 20:34:52.104946 ] Repartitioning input blocks into output blocks
+Traceback (most recent call last):
+  File "/home/vhs/paper-repartition/.venv/bin/repartition", line 8, in <module>
+    sys.exit(main())
+  File "/home/vhs/paper-repartition/.venv/lib64/python3.8/site-packages/keep/repartition.py", line 100, in main
+    ) = in_blocks.repartition(
+  File "/home/vhs/paper-repartition/.venv/lib64/python3.8/site-packages/keep/partition.py", line 155, in repartition
+    r, c, e, p = get_read_blocks_and_cache(self, out_blocks, m, self.array)
+  File "/home/vhs/paper-repartition/.venv/lib64/python3.8/site-packages/keep/keep.py", line 48, in keep
+    r, peak_mem = find_shape_with_constraint(in_blocks, out_blocks, m)
+  File "/home/vhs/paper-repartition/.venv/lib64/python3.8/site-packages/keep/keep.py", line 139, in find_shape_with_constraint
+    r_hat = get_r_hat(in_blocks, out_blocks)
+  File "/home/vhs/paper-repartition/.venv/lib64/python3.8/site-packages/keep/keep.py", line 175, in get_r_hat
+    assert(all(array.shape[i] % r_hat[i] == 0 for i in (0, 1, 2))), message
+AssertionError: Cannot find r hat
+[ 20:34:52.148263 ] Using existing input blocks
+[ 20:34:52.152457 ] Deleting output blocks
+Removing directories
